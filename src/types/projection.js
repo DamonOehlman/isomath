@@ -1,4 +1,4 @@
-function Projection(angle) {
+function Projection(angle, opts) {
     // initialise the angle
     this.angle = angle;
     
@@ -10,7 +10,9 @@ function Projection(angle) {
     this.angleCos = Math.cos(angle);
     this.angleSin = Math.sin(angle);
     
-    
+    // initialise options
+    opts = opts || {};
+    this.clamp = opts.clamp;
 }
 
 Projection.prototype = {
@@ -43,9 +45,18 @@ Projection.prototype = {
     project: function(x, y, z) {
         // calculate the cartesion coordinates
         var cartX = (x - z) * this.angleCos,
-            cartY = y + (x + z) * this.angleSin;
+            cartY = y + (x + z) * this.angleSin,
+            targX = cartX + this.originX,
+            targY = -cartY + this.originY;
             
-        // convert to screen coordinates
-        return [cartX + this.originX, -cartY + this.originY];
+        // if we are clamping, then clamp the values
+        // clamp using the fastest proper rounding: http://jsperf.com/math-round-vs-hack/3
+        if (this.clamp) {
+            targX = ~~(targX + (targX > 0 ? 0.5 : -0.5));
+            targY = ~~(targY + (targY > 0 ? 0.5 : -0.5));
+        }
+            
+        // return the screen coordinates in a array (makes using apply for functions taking an x and y simple)
+        return [targX, targY];
     }
 };

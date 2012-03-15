@@ -5,7 +5,7 @@
     <script src="../isomath.js"></script>
     <script>
     var context = document.getElementById('iso').getContext('2d'),
-        projection = isomath();
+        projection = isomath(0.5, { clamp: true });
         
     // set the origin for the projection
     projection.origin(200, 370);

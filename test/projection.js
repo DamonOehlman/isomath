@@ -30,4 +30,26 @@ describe('isometric projection tests', function() {
         expect(projection.originX).to.equal(150);
         expect(projection.originY).to.equal(200);
     });
+    
+    it('should be able to define a projection that uses clamping', function() {
+        projection = isomath(0.5, { clamp: true });
+        
+        expect(projection).to.be.ok();
+        expect(projection.clamp).to.be.ok();
+    });
+    
+    it('should be able to forward project: 10, 10, 10', function() {
+        var result = projection.project(10, 10, 10);
+        
+        expect(result[0]).to.equal(0);
+        expect(result[1]).to.equal(-19);
+        
+    });
+    
+    it('should be able to forward project: 100, 100, 100', function() {
+        var result = projection.project(100, 100, 100);
+        
+        expect(result[0]).to.equal(0);
+        expect(result[1]).to.equal(-189);
+    });
 });
