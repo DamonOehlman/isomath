@@ -1,10 +1,26 @@
-// isomath 0.0.1
-// ────────────────────────────────────────────────────────────────────────────────────────
-// Isometric Math Helpers
-// ────────────────────────────────────────────────────────────────────────────────────────
+/* ~isomath~
+ * 
+ * Isometric Math Helpers
+ * 
+ * -meta---
+ * version:    0.0.1
+ * builddate:  2012-10-30T04:38:22.601Z
+ * generator:  interleave@0.5.23
+ * 
+ * 
+ * 
+ */ 
 
-(function (glob) {
-    
+// umdjs returnExports pattern: https://github.com/umdjs/umd/blob/master/returnExports.js
+(function (root, factory) {
+    if (typeof exports === 'object') {
+        module.exports = factory();
+    } else if (typeof define === 'function' && define.amd) {
+        define([], factory);
+    } else {
+        root['isomath'] = factory();
+    }
+}(this, function () {
     function Projection(angle, opts) {
         // initialise the angle
         this.angle = angle;
@@ -67,14 +83,13 @@
             return [targX, targY];
         }
     };
-
-
+    
     function isomath(ratio, opts) {
         return new Projection(Math.atan(ratio || 0.5), opts);
     }
     
     // export the projection type
     isomath.Projection = Projection;
-
-    (typeof module != "undefined" && module.exports) ? (module.exports = isomath) : (typeof define != "undefined" ? (define("isomath", [], function() { return isomath; })) : (glob.isomath = isomath));
-})(this);
+    
+    return typeof isomath != 'undefined' ? isomath : undefined;
+}));

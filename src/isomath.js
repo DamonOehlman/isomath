@@ -1,14 +1,8 @@
-//@header
-(function (glob) {
-    
-    //= types/projection
+//= types/projection
 
-    function isomath(ratio, opts) {
-        return new Projection(Math.atan(ratio || 0.5), opts);
-    }
-    
-    // export the projection type
-    isomath.Projection = Projection;
+function isomath(ratio, opts) {
+    return new Projection(Math.atan(ratio || 0.5), opts);
+}
 
-    //@export isomath
-})(this);
+// export the projection type
+isomath.Projection = Projection;
