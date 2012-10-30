@@ -6,13 +6,12 @@
     "isometric",
     "math"
   ],
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "./isomath.js",
   "engines": {
     "node": ">= 0.4.x < 0.7.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "expect.js": "0.1.x",
     "mocha": "*"
