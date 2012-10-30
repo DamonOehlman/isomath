@@ -1,0 +1,14 @@
+{
+  "name": "isomath",
+  "repo": "DamonOehlman/isomath",
+  "description": "Isometric Math Helpers",
+  "version": "0.1.3",
+  "keywords": [
+    "isometric",
+    "math"
+  ],
+  "main": "isomath.js",
+  "scripts": [
+    "isomath.js"
+  ]
+}
