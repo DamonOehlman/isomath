@@ -7,14 +7,9 @@
     "math"
   ],
   "version": "0.1.0",
-  "main": "./isomath.js",
-  "engines": {
-    "node": ">= 0.4.x < 0.7.0"
-  },
   "dependencies": {},
   "devDependencies": {
-    "expect.js": "0.1.x",
-    "mocha": "*"
+    "tape": "~2.1.0"
   },
   "repository": {
     "type": "git",

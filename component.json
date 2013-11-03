@@ -7,8 +7,9 @@
     "isometric",
     "math"
   ],
-  "main": "isomath.js",
+  "main": "index.js",
   "scripts": [
-    "isomath.js"
+    "index.js",
+    "projection.js"
   ]
 }
