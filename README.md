@@ -79,6 +79,13 @@ console.log(projection.project(0, 10, 50));
 // --> [ -45, -32 ]
 ```
 
+## Refernece
+
+### isomath(ratio = 0.5, opts?)
+
+Create a new isomath projection using the specified `ratio` and applying
+any options that have been provided.
+
 ### Projection(angle, opts)
 
 #### origin(x, y)

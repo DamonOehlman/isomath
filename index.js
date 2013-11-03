@@ -43,8 +43,17 @@ var Projection = require('./projection');
 
   <<< examples/clamped.js
 
+  ## Refernece
+
 **/
 
+/**
+  ### isomath(ratio = 0.5, opts?)
+
+  Create a new isomath projection using the specified `ratio` and applying
+  any options that have been provided.
+
+**/
 var isomath = module.exports = function(ratio, opts) {
   return new Projection(Math.atan(ratio || 0.5), opts);
 }
