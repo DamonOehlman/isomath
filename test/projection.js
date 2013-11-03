@@ -31,33 +31,11 @@ test('project 100, 100, 100', function(t) {
   t.equal(Math.round(result[1]), -189);
 });
 
+test('update the origin', function(t) {
+  t.plan(2);
 
-//     it('should be able to set the origin of the projection', function() {
-//         projection.origin(150, 200);
-        
-//         expect(projection.originX).to.equal(150);
-//         expect(projection.originY).to.equal(200);
-//     });
-    
-//     it('should be able to define a projection that uses clamping', function() {
-//         projection = isomath(0.5, { clamp: true });
-        
-//         expect(projection).to.be.ok();
-//         expect(projection.clamp).to.be.ok();
-//     });
-    
-//     it('should be able to forward project: 10, 10, 10', function() {
-//         var result = projection.project(10, 10, 10);
-        
-//         expect(result[0]).to.equal(0);
-//         expect(result[1]).to.equal(-19);
-        
-//     });
-    
-//     it('should be able to forward project: 100, 100, 100', function() {
-//         var result = projection.project(100, 100, 100);
-        
-//         expect(result[0]).to.equal(0);
-//         expect(result[1]).to.equal(-189);
-//     });
-// });
+  projection.origin(150, 200);
+
+  t.equal(projection.originX, 150);
+  t.equal(projection.originY, 200);
+});
