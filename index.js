@@ -4,7 +4,7 @@
 var Projection = require('./projection');
 
 /**
-  # isomath - Isometric Math helpers
+  # isomath
 
   This is a small JS library designed to help out with isometric math.
   By design it is simply the isometric math functions required to translate
