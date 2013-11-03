@@ -2,7 +2,7 @@
   "name": "isomath",
   "description": "Isometric Math Helpers",
   "author": "Damon Oehlman <damon.oehlman@gmail.com>",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "dependencies": {},
   "devDependencies": {
     "tape": "~2.1.0",
