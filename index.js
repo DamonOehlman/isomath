@@ -21,31 +21,28 @@ var Projection = require('./projection');
 
   <<< examples/project.js
 
-  As you can see above, the project function returns an array of x, y coordinates.  Why an array?  Let me show you:
+  As you can see above, the project function returns an array of x, y
+  coordinates.  Why an array?  Let me show you:
 
-  ```js
-  // assume that we have a reference to a canvas 2d context called context
-  // do some moving and drawing of lines
-  context.moveTo.apply(context, projection.project(0, 0, 0));
-  context.lineTo.apply(context, projection.project(200, 0, 0));
-  context.stroke();
-  ```
+  <<< examples/draw-simple.js
 
   Wonderful, isn't it :)
 
   ## Clamping Values
 
-  You will see in many guides on using canvas, that it's a good idea to clamp your values to aid performance.  In general having values aligned around the 0.5 value will produce a well performing and visually appealing display.
+  You will see in many guides on using canvas, that it's a good idea to
+  clamp your values to aid performance.  In general having values aligned
+  around the 0.5 value will produce a well performing and visually appealing
+  display.
 
-  Should you want to clamp values (I do), then specify clamp true when initializing your projection.  __NOTE__: When doing this you will always have to manually specify the isometric projection ratio (default = 0.5):
+  Should you want to clamp values (I do), then specify clamp true when
+  initializing your projection.
 
-  ```js
-  // get a reference to a projection, specify clamping
-  var projection = isomath(0.5, { clamp: true });
+  __NOTE__: When doing this you will always have to manually specify the
+  isometric projection ratio (default = 0.5):
 
-  // project the isometric coordinates 0, 10, 50
-  projection.project(0, 10, 50); // [ -44.721359549995796, -32.3606797749979 ]
-  ```
+  <<< examples/clamped.js
+
 **/
 
 var isomath = module.exports = function(ratio, opts) {

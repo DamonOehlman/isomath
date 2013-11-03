@@ -1,15 +1,12 @@
 {
   "name": "isomath",
   "description": "Isometric Math Helpers",
-  "author": "Damon Oehlman <damon.oehlman@sidelab.com>",
-  "tags": [
-    "isometric",
-    "math"
-  ],
+  "author": "Damon Oehlman <damon.oehlman@gmail.com>",
   "version": "0.1.0",
   "dependencies": {},
   "devDependencies": {
-    "tape": "~2.1.0"
+    "tape": "~2.1.0",
+    "crel": "~1.1.0"
   },
   "repository": {
     "type": "git",
@@ -18,5 +15,19 @@
   "bugs": {
     "url": "http://github.com/DamonOehlman/isomath/issues"
   },
-  "contributors": []
+  "contributors": [],
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/all.js",
+    "gendocs": "gendocs > README.md"
+  },
+  "keywords": [
+    "isometric",
+    "math"
+  ],
+  "license": "MIT"
 }
