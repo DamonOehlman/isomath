@@ -43,7 +43,7 @@ var Projection = require('./projection');
 
   <<< examples/clamped.js
 
-  ## Refernece
+  ## Reference
 
 **/
 

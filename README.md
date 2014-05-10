@@ -10,7 +10,7 @@ What you do with it is up to you.
 
 [![NPM](https://nodei.co/npm/isomath.png)](https://nodei.co/npm/isomath/)
 
-[![Build Status](https://travis-ci.org/DamonOehlman/isomath.png?branch=master)](https://travis-ci.org/DamonOehlman/isomath)
+[![Build Status](https://img.shields.io/travis/DamonOehlman/isomath.svg?branch=master)](https://travis-ci.org/DamonOehlman/isomath)
 
 [![browser support](https://ci.testling.com/DamonOehlman/isomath.png)](https://ci.testling.com/DamonOehlman/isomath)
 
@@ -79,7 +79,7 @@ console.log(projection.project(0, 10, 50));
 // --> [ -45, -32 ]
 ```
 
-## Refernece
+## Reference
 
 ### isomath(ratio = 0.5, opts?)
 
