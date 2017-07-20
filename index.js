@@ -43,6 +43,18 @@ var Projection = require('./projection');
 
   <<< examples/clamped.js
 
+  ### Running the Examples
+
+  From the command-line (after installing dependencies), run the followinng:
+
+  ```
+  npm run examples
+  ```
+
+  Then you will be able to access the examples at `http://localhost:8080/axes.html`,
+  `http://localhost:8080/draw-simple.html`, etc (i.e. for every example js file that
+  exists an html file is generated to access that example).
+
   ## Reference
 
 **/

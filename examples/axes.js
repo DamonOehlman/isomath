@@ -1,8 +1,9 @@
-var crel = require('crel');
-var isomath = require('..');
-var canvas = crel('canvas', { width: 800, height: 600 });
-var context = canvas.getContext('2d');
-var projection = isomath(0.5, { clamp: true });
+const crel = require('crel');
+const isomath = require('..');
+
+const canvas = crel('canvas', { width: 800, height: 600 });
+const context = canvas.getContext('2d');
+const projection = isomath(0.5, { clamp: true });
 
 // set the origin for the projection
 projection.origin(200, 370);

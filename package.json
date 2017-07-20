@@ -5,6 +5,7 @@
   "version": "0.2.1",
   "dependencies": {},
   "devDependencies": {
+    "bde": "^1.1.0",
     "crel": "^3.0.1",
     "tape": "^4.7.0"
   },
@@ -23,7 +24,8 @@
   },
   "scripts": {
     "test": "node test/all.js",
-    "gendocs": "gendocs > README.md"
+    "gendocs": "gendocs > README.md",
+    "examples": "bde examples"
   },
   "keywords": [
     "isometric",

@@ -1,7 +1,8 @@
-var projection = require('..')();
-var crel = require('crel');
-var canvas = crel('canvas', { width: 500, height: 500 });
-var context = canvas.getContext('2d');
+const projection = require('..')();
+const crel = require('crel');
+
+const canvas = crel('canvas', { width: 500, height: 500 });
+const context = canvas.getContext('2d');
 
 // set the origin to the centre of the canvas
 projection.origin(250, 250);
