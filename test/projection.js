@@ -1,41 +1,25 @@
-var isomath = require('..');
-var test = require('tape');
-var projection;
-
-test('expose projection', function(t) {
-  t.plan(1);
-  t.ok(isomath.Projection);
-});
-
-test('create projection', function(t) {
-  t.plan(2);
-  t.ok(projection = isomath());
-  t.ok(projection instanceof isomath.Projection);
-});
+const isomath = require('..')();
+const test = require('tape');
 
 test('project 10, 10, 10', function(t) {
-  var result;
-
   t.plan(2);
-  result = projection.project(10, 10, 10);
+  const result = isomath.project([10, 10, 10]);
   t.equal(result[0], 0);
   t.equal(Math.round(result[1]), -19);
 });
 
 test('project 100, 100, 100', function(t) {
-  var result;
-
   t.plan(2);
-  result = projection.project(100, 100, 100);
+  const result = isomath.project([100, 100, 100]);
   t.equal(result[0], 0);
   t.equal(Math.round(result[1]), -189);
 });
 
 test('update the origin', function(t) {
   t.plan(2);
+  isomath.setOrigin([150, 200]);
+  const [originX, originY ] = isomath.getOrigin();
 
-  projection.origin(150, 200);
-
-  t.equal(projection.originX, 150);
-  t.equal(projection.originY, 200);
+  t.equal(originX, 150);
+  t.equal(originY, 200);
 });
