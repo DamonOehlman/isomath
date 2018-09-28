@@ -1,5 +1,4 @@
-
-# isomath
+<!-- title -->
 
 This is a small JS library designed to help out with isometric math.
 By design it is simply the isometric math functions required to translate
@@ -8,6 +7,7 @@ functions).
 
 What you do with it is up to you.
 
+<!-- badges -->
 
 [![NPM](https://nodei.co/npm/isomath.png)](https://nodei.co/npm/isomath/)
 
@@ -21,6 +21,8 @@ What you do with it is up to you.
 The first step in using isomath is initializing an isometric projection.
 This is done by calling the `isomath` function.  If called without any
 parameters then it defaults to the 1:2 project.
+
+<!-- code: examples/project.js -->
 
 ```js
 const isomath = require('isomath');
@@ -36,6 +38,8 @@ console.log(projection.project(0, 10, 50));
 
 As you can see above, the project function returns an array of x, y
 coordinates.  Why an array?  Let me show you:
+
+<!-- code: examples/project.js -->
 
 ```js
 const projection = require('isomath')();
@@ -94,27 +98,6 @@ npm run examples
 Then you will be able to access the examples at `http://localhost:8080/axes.html`,
 `http://localhost:8080/draw-simple.html`, etc (i.e. for every example js file that
 exists an html file is generated to access that example).
-
-## Reference
-
-### isomath(ratio = 0.5, opts?)
-
-Create a new isomath projection using the specified `ratio` and applying
-any options that have been provided.
-
-### Projection(angle, opts)
-
-#### origin(x, y)
-
-Get or set the current projection origin.
-
-#### project(x, y, z)
-
-This function is used to project from the x, y, z coordinates from
-isometric space to 2d screen coordinates.
-
-Based on routines outlined at:
-http://www.kirupa.com/developer/actionscript/isometric_transforms.htm
 
 ## License(s)
 
