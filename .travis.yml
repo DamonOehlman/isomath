@@ -1,8 +1,10 @@
 language: node_js
 node_js:
-  - lts
+  - lts/argon
+  - lts/boron
+  - lts/carbon
+  - lts/dubnium
   - stable
-  - unstable
 
 notifications:
   email:
