@@ -6,7 +6,8 @@
   "dependencies": {},
   "devDependencies": {
     "bde": "^1.1.0",
-    "crel": "^3.0.1",
+    "crel": "^4.0.1",
+    "embellish-readme": "^1.5.1",
     "tape": "^4.7.0"
   },
   "repository": {
@@ -24,28 +25,12 @@
   },
   "scripts": {
     "test": "node test/all.js",
-    "gendocs": "gendocs > README.md",
-    "examples": "bde examples"
+    "gendocs": "embellish README.md",
+    "examples": "bde --port 8090 examples"
   },
   "keywords": [
     "isometric",
     "math"
   ],
-  "license": "MIT",
-  "testling": {
-    "files": "test/all.js",
-    "browsers": [
-      "ie/8..latest",
-      "firefox/16..latest",
-      "firefox/nightly",
-      "chrome/22..latest",
-      "chrome/canary",
-      "opera/12..latest",
-      "opera/next",
-      "safari/5.1..latest",
-      "ipad/6.0..latest",
-      "iphone/6.0..latest",
-      "android-browser/4.2..latest"
-    ]
-  }
+  "license": "MIT"
 }

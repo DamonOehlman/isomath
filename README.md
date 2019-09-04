@@ -1,4 +1,3 @@
-
 # isomath
 
 This is a small JS library designed to help out with isometric math.
@@ -8,13 +7,9 @@ functions).
 
 What you do with it is up to you.
 
-
 [![NPM](https://nodei.co/npm/isomath.png)](https://nodei.co/npm/isomath/)
 
-
-[![browser support](https://ci.testling.com/DamonOehlman/isomath.png)](https://ci.testling.com/DamonOehlman/isomath)
-
-[![Build Status](https://api.travis-ci.org/DamonOehlman/isomath.svg?branch=master)](https://travis-ci.org/DamonOehlman/isomath) [![bitHound Score](https://www.bithound.io/github/DamonOehlman/isomath/badges/score.svg)](https://www.bithound.io/github/DamonOehlman/isomath) 
+[![Build Status](https://api.travis-ci.org/DamonOehlman/isomath.svg?branch=master)](https://travis-ci.org/DamonOehlman/isomath)
 
 ## Example Usage
 
@@ -31,7 +26,6 @@ const projection = isomath();
 // project the isometric coordinates 0, 10, 50
 console.log(projection.project(0, 10, 50));
 // --> [ -44.721359549995796, -32.3606797749979 ]
-
 ```
 
 As you can see above, the project function returns an array of x, y
@@ -53,7 +47,6 @@ context.lineTo.apply(context, projection.project(200, 0, 0));
 context.stroke();
 
 document.body.appendChild(canvas);
-
 ```
 
 Wonderful, isn't it :)
@@ -68,7 +61,7 @@ display.
 Should you want to clamp values (I do), then specify clamp true when
 initializing your projection.
 
-__NOTE__: When doing this you will always have to manually specify the
+**NOTE**: When doing this you will always have to manually specify the
 isometric projection ratio (default = 0.5):
 
 ```js
@@ -80,7 +73,6 @@ const projection = isomath(0.5, { clamp: true });
 // project the isometric coordinates 0, 10, 50
 console.log(projection.project(0, 10, 50));
 // --> [ -45, -32 ]
-
 ```
 
 ### Running the Examples
@@ -114,29 +106,28 @@ This function is used to project from the x, y, z coordinates from
 isometric space to 2d screen coordinates.
 
 Based on routines outlined at:
-http://www.kirupa.com/developer/actionscript/isometric_transforms.htm
+<http://www.kirupa.com/developer/actionscript/isometric_transforms.htm>
 
-## License(s)
+## LICENSE
 
-### MIT
+The MIT License (MIT)
 
-Copyright (c) 2017 Damon Oehlman <damon.oehlman@gmail.com>
+Copyright (c) 2019 Damon Oehlman <damon.oehlman@gmail.com>
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
