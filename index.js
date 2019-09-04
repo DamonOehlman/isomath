@@ -1,74 +1,37 @@
-/* jshint node: true */
-'use strict';
+const DEFAULT_OPTIONS = {
+  angle: 0.5,
+  origin: [0, 0],
+  clamp: false,
+};
 
-var Projection = require('./projection');
+module.exports = options => {
+  if (options !== undefined && typeof options !== 'object') {
+    throw new Error('initialization options required')
+  }
 
-/**
-  # isomath
+  const { angle, origin, clamp } = { ...DEFAULT_OPTIONS, ...options };
+  const angleCos = Math.cos(angle);
+  const angleSin = Math.sin(angle);
 
-  This is a small JS library designed to help out with isometric math.
-  By design it is simply the isometric math functions required to translate
-  from x,y,z isometric space to the x,y screen coordinates (and associated
-  functions).
+  /**
+    This function is used to project from the x, y, z coordinates from
+    isometric space to 2d screen coordinates.
 
-  What you do with it is up to you.
+    Based on routines outlined at:
+    http://www.kirupa.com/developer/actionscript/isometric_transforms.htm
+  **/
+  return (x, y, z) => {
+    // calculate the cartesion coordinates
+    const cartX = (x - z) * angleCos;
+    const cartY = y + (x + z) * angleSin;
+    const targX = cartX + origin[0];
+    const targY = -cartY + origin[1];
 
-  ## Example Usage
-
-  The first step in using isomath is initializing an isometric projection.
-  This is done by calling the `isomath` function.  If called without any
-  parameters then it defaults to the 1:2 project.
-
-  <<< examples/project.js
-
-  As you can see above, the project function returns an array of x, y
-  coordinates.  Why an array?  Let me show you:
-
-  <<< examples/draw-simple.js
-
-  Wonderful, isn't it :)
-
-  ## Clamping Values
-
-  You will see in many guides on using canvas, that it's a good idea to
-  clamp your values to aid performance.  In general having values aligned
-  around the 0.5 value will produce a well performing and visually appealing
-  display.
-
-  Should you want to clamp values (I do), then specify clamp true when
-  initializing your projection.
-
-  __NOTE__: When doing this you will always have to manually specify the
-  isometric projection ratio (default = 0.5):
-
-  <<< examples/clamped.js
-
-  ### Running the Examples
-
-  From the command-line (after installing dependencies), run the followinng:
-
-  ```
-  npm run examples
-  ```
-
-  Then you will be able to access the examples at `http://localhost:8080/axes.html`,
-  `http://localhost:8080/draw-simple.html`, etc (i.e. for every example js file that
-  exists an html file is generated to access that example).
-
-  ## Reference
-
-**/
-
-/**
-  ### isomath(ratio = 0.5, opts?)
-
-  Create a new isomath projection using the specified `ratio` and applying
-  any options that have been provided.
-
-**/
-var isomath = module.exports = function(ratio, opts) {
-  return new Projection(Math.atan(ratio || 0.5), opts);
-}
-
-// export the projection type
-isomath.Projection = Projection
+    // if we are clamping, then clamp the values
+    // clamp using the fastest proper rounding: http://jsperf.com/math-round-vs-hack/3
+    return [
+      clamp ? ~~targX : targX,
+      clamp ? ~~targY : targY,
+    ];
+  };
+};
