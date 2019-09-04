@@ -1,5 +1,5 @@
 const DEFAULT_OPTIONS = {
-  angle: 0.5,
+  ratio: 0.5,
   origin: [0, 0],
   clamp: false,
 };
@@ -9,7 +9,8 @@ module.exports = options => {
     throw new Error('initialization options required')
   }
 
-  const { angle, origin, clamp } = { ...DEFAULT_OPTIONS, ...options };
+  const { ratio, origin, clamp } = { ...DEFAULT_OPTIONS, ...options };
+  const angle = Math.atan(ratio);
   const angleCos = Math.cos(angle);
   const angleSin = Math.sin(angle);
 
@@ -30,8 +31,8 @@ module.exports = options => {
     // if we are clamping, then clamp the values
     // clamp using the fastest proper rounding: http://jsperf.com/math-round-vs-hack/3
     return [
-      clamp ? ~~targX : targX,
-      clamp ? ~~targY : targY,
+      clamp ? ~~(targX + (targX > 0 ? 0.5 : -0.5)) : targX,
+      clamp ? ~~(targY + (targY > 0 ? 0.5 : -0.5)) : targY,
     ];
   };
 };
