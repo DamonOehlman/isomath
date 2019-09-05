@@ -18,32 +18,29 @@ This is done by calling the `isomath` function.  If called without any
 parameters then it defaults to the 1:2 project.
 
 ```js
-const isomath = require('isomath');
+const isomath = require('..');
 
 // get a reference to a projection (optional, but encouraged)
-const projection = isomath();
+const project = isomath();
 
 // project the isometric coordinates 0, 10, 50
-console.log(projection.project(0, 10, 50));
+console.log(project(0, 10, 50));
 // --> [ -44.721359549995796, -32.3606797749979 ]
 ```
 
 As you can see above, the project function returns an array of x, y
-coordinates.  Why an array?  Let me show you:
+coordinates.  Why an array?  Well thanks to [spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) this is pretty useful:
 
 ```js
-const projection = require('isomath')();
+const project = require('..')({ origin: [250, 250]});
 const crel = require('crel');
 
 const canvas = crel('canvas', { width: 500, height: 500 });
 const context = canvas.getContext('2d');
 
-// set the origin to the centre of the canvas
-projection.origin(250, 250);
-
 // draw a simple line
-context.moveTo.apply(context, projection.project(0, 0, 0));
-context.lineTo.apply(context, projection.project(200, 0, 0));
+context.moveTo(...project(0, 0, 0));
+context.lineTo(...project(200, 0, 0));
 context.stroke();
 
 document.body.appendChild(canvas);
@@ -65,13 +62,13 @@ initializing your projection.
 isometric projection ratio (default = 0.5):
 
 ```js
-const isomath = require('isomath');
+const isomath = require('..');
 
 // get a reference to a projection, specify clamping
-const projection = isomath(0.5, { clamp: true });
+const project = isomath({ angle: 0.5, clamp: true });
 
 // project the isometric coordinates 0, 10, 50
-console.log(projection.project(0, 10, 50));
+console.log(project(0, 10, 50));
 // --> [ -45, -32 ]
 ```
 
@@ -86,27 +83,6 @@ npm run examples
 Then you will be able to access the examples at `http://localhost:8080/axes.html`,
 `http://localhost:8080/draw-simple.html`, etc (i.e. for every example js file that
 exists an html file is generated to access that example).
-
-## Reference
-
-### isomath(ratio = 0.5, opts?)
-
-Create a new isomath projection using the specified `ratio` and applying
-any options that have been provided.
-
-### Projection(angle, opts)
-
-#### origin(x, y)
-
-Get or set the current projection origin.
-
-#### project(x, y, z)
-
-This function is used to project from the x, y, z coordinates from
-isometric space to 2d screen coordinates.
-
-Based on routines outlined at:
-<http://www.kirupa.com/developer/actionscript/isometric_transforms.htm>
 
 ## LICENSE
 

@@ -13,28 +13,19 @@ const project = isomath({
 context.fillStyle = 'white';
 context.fillRect(0, 0, 400, 400);
 
-// draw the x-axis
-context.strokeStyle = '#FF0000';
-context.beginPath();
-context.moveTo.apply(context, project(0, 0, 0));
-context.lineTo.apply(context, project(200, 0, 0));
-context.closePath();
-context.stroke();
+const axes = [
+  { color: '#FF0000', start: [0, 0, 0], end: [200, 0, 0] },
+  { color: '#00FF00', start: [0, 0, 0], end: [0, 200, 0] },
+  { color: '#0000FF', start: [0, 0, 0], end: [0, 0, 200] },
+];
 
-// draw the y-axis
-context.strokeStyle = '#00FF00';
-context.beginPath();
-context.moveTo.apply(context, project(0, 0, 0));
-context.lineTo.apply(context, project(0, 200, 0));
-context.closePath();
-context.stroke();
-
-// draw the z-axis
-context.strokeStyle = '#0000FF';
-context.beginPath();
-context.moveTo.apply(context, project(0, 0, 0));
-context.lineTo.apply(context, project(0, 0, 200));
-context.closePath();
-context.stroke();
+for (const { color, start, end } of axes) {
+  context.strokeStyle = color;
+  context.beginPath();
+  context.moveTo(...project(...start));
+  context.lineTo(...project(...end));
+  context.closePath();
+  context.stroke();
+}
 
 document.body.appendChild(canvas);
